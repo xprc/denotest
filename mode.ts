@@ -1,7 +1,7 @@
 import { serve } from "https://deno.land/std/http/mod.ts";
 import { lookup } from "https://deno.land/x/media_types/mod.ts";
 
-const BASE_PATH = "./public";
+const BASE_PATH = "./";
 
 const reqHandler = async (req: Request) => {
   const filePath = BASE_PATH + new URL(req.url).pathname;
