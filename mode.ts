@@ -23,4 +23,4 @@ const reqHandler = async (req: Request) => {
   });
 };
 
-serve(reqHandler, { port: 80，443);
+serve(reqHandler);
