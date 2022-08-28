@@ -1,4 +1,4 @@
-import { serve } from "https://deno.land/std/http/mod.ts";
+import { server } from "https://deno.land/std/http/mod.ts";
 import { lookup } from "https://deno.land/x/media_types/mod.ts";
 
 const BASE_PATH = "./";
@@ -23,4 +23,4 @@ const reqHandler = async (req: Request) => {
   });
 };
 
-serve(reqHandler);
+server(reqHandler);
