@@ -19,7 +19,14 @@ const reqHandler = async (req: Request) => {
     fileSize = (await Deno.stat(filePath)).size;
   } catch (e) {
     if (e instanceof Deno.errors.NotFound) {
-      return new Response(null, { status: 404 });
+      const body = (await Deno.open(filePath)).readable;
+      return new Response(body, {
+        headers: {
+          "content-length": (await Deno.stat("./404.html")).size.toString(),
+          "content-type": lookup("./404.html") || "application/octet-stream",
+        },
+        status: 404
+      });
     }
     return new Response(null, { status: 500 });
   }
