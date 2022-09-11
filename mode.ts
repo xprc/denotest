@@ -4,6 +4,15 @@ import { lookup } from "https://deno.land/x/media_types/mod.ts";
 const BASE_PATH = "./";
 
 const reqHandler = async (req: Request) => {
+  if (req.url === "/") {
+    const body = (await Deno.open("./index.html")).readable;
+    return new Response(body, {
+      headers: {
+        "content-length": fileSize.toString(),
+        "content-type": lookup("./index.html") || "application/octet-stream",
+      },
+    });
+  }
   const filePath = BASE_PATH + new URL(req.url).pathname;
   let fileSize;
   try {
