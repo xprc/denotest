@@ -39,7 +39,7 @@ const reqHandler = async (req: Request) => {
     headers: {
       "access-control-allow-origin": "*",
       "cache-control": "max-age=14400",
-      "tp-content-length": fileSize,
+      "tp-content-length": fileSize.toString(),
       "content-type": lookup(filePath) || "application/octet-stream",
     },
   });
