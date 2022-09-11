@@ -19,7 +19,7 @@ const reqHandler = async (req: Request) => {
     fileSize = (await Deno.stat(filePath)).size;
   } catch (e) {
     if (e instanceof Deno.errors.NotFound) {
-      const body = (await Deno.open(filePath)).readable;
+      const body = (await Deno.open("./404.html")).readable;
       return new Response(body, {
         headers: {
           "content-length": (await Deno.stat("./404.html")).size.toString(),
