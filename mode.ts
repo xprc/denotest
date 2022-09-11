@@ -4,7 +4,8 @@ import { lookup } from "https://deno.land/x/media_types/mod.ts";
 const BASE_PATH = "./";
 
 const reqHandler = async (req: Request) => {
-  if (new URL(request.url).startsWith("/5") {
+  const filePath = BASE_PATH + new URL(req.url).pathname;
+  if (filePath === "/5") {
     const body = (await Deno.open("./index.html")).readable;
     return new Response(body, {
       headers: {
@@ -13,7 +14,6 @@ const reqHandler = async (req: Request) => {
       },
     });
   }
-  const filePath = BASE_PATH + new URL(req.url).pathname;
   let fileSize;
   try {
     fileSize = (await Deno.stat(filePath)).size;
