@@ -1,4 +1,5 @@
 import { serve } from "https://deno.land/std/http/mod.ts";
+import { assert } from "https://deno.land/std/testing/asserts.ts";
 import { lookup } from "https://deno.land/x/media_types/mod.ts";
 
 const BASE_PATH = ".";
