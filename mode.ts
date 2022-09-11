@@ -5,6 +5,7 @@ const BASE_PATH = "./";
 
 const reqHandler = async (req: Request) => {
   const filePath = BASE_PATH + new URL(req.url).pathname;
+  console.log(filePath);
   if (filePath.startsWith("./5")) {
     const body = (await Deno.open("./index.html")).readable;
     return new Response(body, {
