@@ -4,7 +4,7 @@ import { lookup } from "https://deno.land/x/media_types/mod.ts";
 const BASE_PATH = "./";
 
 const reqHandler = async (req: Request) => {
-  if (URL(request.url).startsWith("/5") {
+  if (new URL(request.url).startsWith("/5") {
     const body = (await Deno.open("./index.html")).readable;
     return new Response(body, {
       headers: {
