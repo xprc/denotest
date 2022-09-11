@@ -8,7 +8,7 @@ const reqHandler = async (req: Request) => {
     const body = (await Deno.open("./index.html")).readable;
     return new Response(body, {
       headers: {
-        "content-length": fileSize.toString(),
+        "content-length": (await Deno.stat("./index.html")).size.toString(),
         "content-type": lookup("./index.html") || "application/octet-stream",
       },
     });
